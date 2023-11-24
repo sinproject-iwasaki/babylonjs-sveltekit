@@ -1,0 +1,6 @@
+sinpro-template-for-sveltekit.sinpro.dev {
+	reverse_proxy :3005
+
+	@static path *.avif *.woff2 *.png
+	header @static Cache-Control "public, max-age=86400, must-revalidate"
+}

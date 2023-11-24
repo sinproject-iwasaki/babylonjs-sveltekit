@@ -7,8 +7,6 @@ const file = fileURLToPath(new URL('package.json', import.meta.url))
 const json = await fs.promises.readFile(file, 'utf8')
 const pkg = JSON.parse(json)
 
-const base_path = process.env['CI'] ? '/babylonjs-sveltekit' : ''
-
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: vitePreprocess(),
@@ -17,7 +15,7 @@ const config = {
 			precompress: true,
 		}),
 		paths: {
-			base: base_path,
+			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH,
 		},
 		version: {
 			name: pkg.version,

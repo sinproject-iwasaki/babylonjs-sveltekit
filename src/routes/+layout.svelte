@@ -28,4 +28,8 @@
 		height: 100vh;
 		touch-action: none;
 	}
+
+	:global(canvas):focus {
+		outline: none;
+	}
 </style>

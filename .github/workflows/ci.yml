@@ -34,7 +34,7 @@ jobs:
     name: Vitest Test, Playwright Test
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.39.0-jammy
+      image: mcr.microsoft.com/playwright:v1.40.0-jammy
 
     timeout-minutes: 10
 

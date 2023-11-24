@@ -1,5 +1,5 @@
 {
-	"name": "babylon-sveltekit",
+	"name": "babylonjs-sveltekit",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -56,5 +56,8 @@
 		"*.{js,ts,svelte}": "eslint --cache --fix",
 		"*.css": "stylelint --fix",
 		"*.{js,css,md,ts,svelte,css,scss,json}": "prettier --write"
+	},
+	"dependencies": {
+		"babylonjs": "^6.31.0"
 	}
 }

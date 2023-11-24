@@ -1,5 +1,16 @@
+<script lang="ts">
+	import { Scene } from '$lib/babylon/scene'
+	import { onMount } from 'svelte'
+
+	let canvas: HTMLCanvasElement
+
+	onMount(() => {
+		Scene.create(canvas)
+	})
+</script>
+
 <svelte:head>
-	<title>sinpro-template-for-sveltekit</title>
+	<title>Babylon.js SvelteKit</title>
 </svelte:head>
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+
+<canvas bind:this={canvas} />

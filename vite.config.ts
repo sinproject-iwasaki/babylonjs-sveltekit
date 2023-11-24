@@ -31,6 +31,7 @@ export default defineConfig({
 				'src/app.d.ts',
 				'src/hooks.server.ts',
 				'src/scripts/create_git_branch.ts',
+				'src/lib/babylon/*.ts',
 			],
 			reporter: ['lcov', 'text'],
 		},

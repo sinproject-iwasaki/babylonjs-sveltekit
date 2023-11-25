@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { BoxesScene } from '$lib/babylon/scene/boxes-scene'
+	import { MainScene } from '$lib/babylon/scene/main-scene'
 	import { onMount } from 'svelte'
 
 	let canvas: HTMLCanvasElement
 
 	onMount(() => {
-		new BoxesScene(canvas).create()
+		new MainScene(canvas).create()
 	})
 </script>
 

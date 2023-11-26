@@ -15,7 +15,7 @@ export class MainScene {
 		ground.material = ground_mat
 	}
 
-	private _build_box(): BABYLON.Mesh {
+	private _build_box(): void {
 		const box_mat = this._scene_builder.create_textured_material(
 			'box_mat',
 			'https://assets.babylonjs.com/environments/semihouse.png'
@@ -30,11 +30,9 @@ export class MainScene {
 		const box = BABYLON.MeshBuilder.CreateBox('box', { width: 2, faceUV: face_uv, wrap: true })
 		box.position.y = 0.5
 		box.material = box_mat
-
-		return box
 	}
 
-	private _build_roof(): BABYLON.Mesh {
+	private _build_roof(): void {
 		const roof_mat = this._scene_builder.create_textured_material(
 			'roof_mat',
 			'https://assets.babylonjs.com/environments/roof.jpg'
@@ -50,16 +48,6 @@ export class MainScene {
 		roof.rotation.z = Math.PI / 2
 		roof.position.y = 1.22
 		roof.material = roof_mat
-
-		return roof
-	}
-
-	private _build_house(): BABYLON.Nullable<BABYLON.Mesh> {
-		const box = this._build_box()
-		const roof = this._build_roof()
-		const house = BABYLON.Mesh.MergeMeshes([box, roof], true, false, undefined, false, true)
-
-		return house
 	}
 
 	public create(): MainScene {
@@ -69,7 +57,8 @@ export class MainScene {
 		scene_builder.attach_light({})
 
 		this._build_ground()
-		this._build_house()
+		this._build_box()
+		this._build_roof()
 
 		scene_builder.run()
 

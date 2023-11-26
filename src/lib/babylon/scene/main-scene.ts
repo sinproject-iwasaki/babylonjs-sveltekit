@@ -8,38 +8,57 @@ export class MainScene {
 		this._scene_builder = new SceneBuilder(canvas)
 	}
 
-	public create(): MainScene {
-		const scene_builder = this._scene_builder
+	private _build_ground(): void {
+		const ground_mat = this._scene_builder.create_color3_material('ground_mat', 0, 1, 0)
 
-		scene_builder.attach_arc_rotate_camera()
-		scene_builder.attach_light({})
+		const ground = this._scene_builder.create_ground()
+		ground.material = ground_mat
+	}
 
-		const ground_mat = scene_builder.create_color3_material('ground_mat', 0, 1, 0)
+	private _build_box(): void {
+		const box_mat = this._scene_builder.create_textured_material(
+			'box_mat',
+			'https://assets.babylonjs.com/environments/semihouse.png'
+		)
 
-		const roof_mat = scene_builder.create_textured_material(
+		const face_uv: BABYLON.Vector4[] = []
+		face_uv.push(new BABYLON.Vector4(0.6, 0.0, 1.0, 1.0))
+		face_uv.push(new BABYLON.Vector4(0.0, 0.0, 0.4, 1.0))
+		face_uv.push(new BABYLON.Vector4(0.4, 0.0, 0.6, 1.0))
+		face_uv.push(new BABYLON.Vector4(0.4, 0.0, 0.6, 1.0))
+
+		const box = BABYLON.MeshBuilder.CreateBox('box', { width: 2, faceUV: face_uv, wrap: true })
+		box.position.y = 0.5
+		box.material = box_mat
+	}
+
+	private _build_roof(): void {
+		const roof_mat = this._scene_builder.create_textured_material(
 			'roof_mat',
 			'https://assets.babylonjs.com/environments/roof.jpg'
 		)
 
-		const box_mat = scene_builder.create_textured_material(
-			'box_mat',
-			'https://www.babylonjs-playground.com/textures/floor.png'
-		)
-
-		const ground = scene_builder.create_ground()
-		const box = scene_builder.create_box()
 		const roof = BABYLON.MeshBuilder.CreateCylinder('roof', {
 			diameter: 1.3,
 			height: 1.2,
 			tessellation: 3,
 		})
 		roof.scaling.x = 0.75
+		roof.scaling.y = 2
 		roof.rotation.z = Math.PI / 2
 		roof.position.y = 1.22
-
-		ground.material = ground_mat
-		box.material = box_mat
 		roof.material = roof_mat
+	}
+
+	public create(): MainScene {
+		const scene_builder = this._scene_builder
+
+		scene_builder.attach_arc_rotate_camera()
+		scene_builder.attach_light({})
+
+		this._build_ground()
+		this._build_box()
+		this._build_roof()
 
 		scene_builder.run()
 

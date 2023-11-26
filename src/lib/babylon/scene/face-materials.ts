@@ -50,7 +50,7 @@ export class MainScene {
 		roof.material = roof_mat
 	}
 
-	public create(): MainScene {
+	public create(): this {
 		const scene_builder = this._scene_builder
 
 		scene_builder.attach_arc_rotate_camera()

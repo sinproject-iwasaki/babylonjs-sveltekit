@@ -62,7 +62,7 @@ export class MainScene {
 		return house
 	}
 
-	public create(): MainScene {
+	public create(): this {
 		const scene_builder = this._scene_builder
 
 		scene_builder.attach_arc_rotate_camera()

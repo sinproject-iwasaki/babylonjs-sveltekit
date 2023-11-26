@@ -22,7 +22,7 @@ export class SceneBuilder {
 			-Math.PI / 2,
 			Math.PI / 2.5,
 			10,
-			new BABYLON.Vector3(0, 0, 0)
+			new BABYLON.Vector3(0, 0.75, 0)
 		)
 		camera.attachControl(this._canvas, true)
 	}

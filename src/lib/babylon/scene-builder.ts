@@ -82,11 +82,19 @@ export class SceneBuilder {
 		return material
 	}
 
-	public begin_animation(names: string[]): void {
+	public begin_animation(names: string[], animation: BABYLON.Animation, from = 0, to = 30): void {
 		names.forEach((name) => {
 			const mesh = this._scene.getMeshByName(name)
-			this._scene.beginAnimation(mesh, 0, 30, true)
+
+			if (!mesh) return
+
+			mesh.animations.push(animation)
+			this._scene.beginAnimation(mesh, from, to, true)
 		})
+	}
+
+	public get_by_name(name: string): BABYLON.Nullable<BABYLON.AbstractMesh> {
+		return this._scene.getMeshByName(name)
 	}
 
 	public run(): void {

@@ -13,6 +13,8 @@
 	"cSpell.words": [
 		"adsbygoogle",
 		"akiojin",
+		"ANIMATIONLOOPMODE",
+		"ANIMATIONTYPE",
 		"authtoken",
 		"autocompletes",
 		"autocrlf",
@@ -35,6 +37,7 @@
 		"dbaeumer",
 		"deepl",
 		"DICOM",
+		"earcut",
 		"Elementor",
 		"esbenp",
 		"exist",

@@ -25,6 +25,7 @@
 		"@playwright/test": "^1.40.0",
 		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.27.6",
+		"@types/earcut": "^2.1.4",
 		"@typescript-eslint/eslint-plugin": "^6.12.0",
 		"@typescript-eslint/parser": "^6.12.0",
 		"@vite-pwa/sveltekit": "^0.2.8",
@@ -43,10 +44,10 @@
 		"stylelint": "^15.11.0",
 		"stylelint-config-standard": "^34.0.0",
 		"svelte": "^4.2.7",
-		"svelte-check": "^3.6.1",
+		"svelte-check": "^3.6.2",
 		"tailwindcss": "^3.3.5",
 		"tslib": "^2.6.2",
-		"tsx": "^4.4.0",
+		"tsx": "^4.5.0",
 		"typescript": "^5.3.2",
 		"vite": "^4.5.0",
 		"vitest": "^0.34.6"
@@ -58,6 +59,7 @@
 		"*.{js,css,md,ts,svelte,css,scss,json}": "prettier --write"
 	},
 	"dependencies": {
-		"babylonjs": "^6.31.0"
+		"babylonjs": "^6.31.0",
+		"earcut": "^2.2.4"
 	}
 }

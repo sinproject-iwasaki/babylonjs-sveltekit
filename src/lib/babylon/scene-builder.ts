@@ -16,12 +16,12 @@ export class SceneBuilder {
 		camera.attachControl(this._canvas, false)
 	}
 
-	public attach_arc_rotate_camera(): void {
+	public attach_arc_rotate_camera(radius = 3): void {
 		const camera = new BABYLON.ArcRotateCamera(
 			'camera',
 			-Math.PI / 2,
 			Math.PI / 2.5,
-			3,
+			radius,
 			new BABYLON.Vector3(0, 0, 0)
 		)
 		camera.attachControl(this._canvas, true)
@@ -80,6 +80,13 @@ export class SceneBuilder {
 		material.diffuseTexture = this._create_texture(url)
 
 		return material
+	}
+
+	public begin_animation(names: string[]): void {
+		names.forEach((name) => {
+			const mesh = this._scene.getMeshByName(name)
+			this._scene.beginAnimation(mesh, 0, 30, true)
+		})
 	}
 
 	public run(): void {

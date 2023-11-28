@@ -74,12 +74,12 @@ export class CarMesh {
 		wheel_lf.position.y = -0.2 - 0.035
 	}
 
-	public build(): this {
+	public build(): BABYLON.Mesh {
 		const car_body = this._build_body()
 		car_body.rotation.x = -Math.PI / 2
 
 		this._build_wheels(car_body)
 
-		return this
+		return car_body
 	}
 }

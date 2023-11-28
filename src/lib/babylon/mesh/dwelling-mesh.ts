@@ -81,7 +81,7 @@ export class DwellingMesh {
 	}
 
 	private _build_dwellings(): void {
-		this._build_ground(16)
+		this._build_ground(30)
 
 		const detached_house = this._build_house()
 		this._set_rotation_and_position(detached_house, -Math.PI / 16, -6.8, 2.5)

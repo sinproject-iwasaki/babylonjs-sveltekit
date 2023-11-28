@@ -36,7 +36,7 @@ export class MainScene {
 		})
 
 		car_animation.setKeys(car_animation_keys)
-		this._scene_builder.begin_animation(['car'], car_animation, 0, 150)
+		this._scene_builder.begin_animation_by_names(['car'], car_animation, 0, 150)
 
 		return car_animation
 	}
@@ -64,7 +64,7 @@ export class MainScene {
 
 		wheel_animation.setKeys(wheel_animation_keys)
 
-		this._scene_builder.begin_animation(
+		this._scene_builder.begin_animation_by_names(
 			['wheel_rb', 'wheel_rf', 'wheel_lb', 'wheel_lf'],
 			wheel_animation
 		)

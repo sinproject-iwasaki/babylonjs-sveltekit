@@ -16,13 +16,13 @@ export class SceneBuilder {
 		camera.attachControl(this._canvas, false)
 	}
 
-	public attach_arc_rotate_camera(radius = 3): void {
+	public attach_arc_rotate_camera(radius = 3, y = 0): void {
 		const camera = new BABYLON.ArcRotateCamera(
 			'camera',
 			-Math.PI / 2,
 			Math.PI / 2.5,
 			radius,
-			new BABYLON.Vector3(0, 0, 0)
+			new BABYLON.Vector3(0, y, 0)
 		)
 		camera.attachControl(this._canvas, true)
 	}
@@ -82,15 +82,38 @@ export class SceneBuilder {
 		return material
 	}
 
-	public begin_animation(names: string[], animation: BABYLON.Animation, from = 0, to = 30): void {
+	public begin_animation(
+		mesh: BABYLON.AbstractMesh,
+		animation: BABYLON.Animation,
+		from = 0,
+		to = 30
+	): void {
+		mesh.animations.push(animation)
+		this._scene.beginAnimation(mesh, from, to, true)
+	}
+
+	public begin_animation_by_names(
+		names: string[],
+		animation: BABYLON.Animation,
+		from = 0,
+		to = 30
+	): void {
 		names.forEach((name) => {
 			const mesh = this._scene.getMeshByName(name)
 
 			if (!mesh) return
 
-			mesh.animations.push(animation)
-			this._scene.beginAnimation(mesh, from, to, true)
+			this.begin_animation(mesh, animation, from, to)
 		})
+	}
+
+	public begin_skelton_animation(
+		skelton: BABYLON.Skeleton,
+		from = 0,
+		to = 30,
+		speed_ratio = 1.0
+	): void {
+		this._scene.beginAnimation(skelton, from, to, true, speed_ratio)
 	}
 
 	public get_by_name(name: string): BABYLON.AbstractMesh {

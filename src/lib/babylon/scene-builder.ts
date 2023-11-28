@@ -93,8 +93,12 @@ export class SceneBuilder {
 		})
 	}
 
-	public get_by_name(name: string): BABYLON.Nullable<BABYLON.AbstractMesh> {
-		return this._scene.getMeshByName(name)
+	public get_by_name(name: string): BABYLON.AbstractMesh {
+		const mesh = this._scene.getMeshByName(name)
+
+		if (!mesh) throw new Error(`Mesh ${name} not found`)
+
+		return mesh
 	}
 
 	public run(): void {

@@ -37,7 +37,7 @@ export class MainScene {
 
 		wheel_animation.setKeys(wheel_animation_keys)
 
-		this._scene_builder.begin_animation(
+		this._scene_builder.begin_animation_by_names(
 			['wheel_rb', 'wheel_rf', 'wheel_lb', 'wheel_lf'],
 			wheel_animation
 		)
